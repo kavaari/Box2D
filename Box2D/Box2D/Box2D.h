@@ -33,6 +33,7 @@ For discussion please visit http://box2d.org/forum
 
 #include "Box2D/Common/b2Settings.h"
 #include "Box2D/Common/b2Draw.h"
+#include "Box2D/Common/b2Stat.h"
 #include "Box2D/Common/b2Timer.h"
 
 #include "Box2D/Collision/Shapes/b2CircleShape.h"
@@ -65,4 +66,6 @@ For discussion please visit http://box2d.org/forum
 #include "Box2D/Dynamics/Joints/b2WeldJoint.h"
 #include "Box2D/Dynamics/Joints/b2WheelJoint.h"
 
+#include "Box2D/Particle/b2Particle.h"
+#include "Box2D/Particle/b2ParticleGroup.h"
 #endif

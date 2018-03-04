@@ -140,7 +140,31 @@ struct b2Vec2
 	float32 x, y;
 };
 
-/// A 2D column vector with 3 elements.
+/// Add a float to a vector.
+inline b2Vec2 operator + (const b2Vec2& v, float f)
+{
+	return b2Vec2(v.x + f, v.y + f);
+}
+
+/// Substract a float from a vector.
+inline b2Vec2 operator - (const b2Vec2& v, float f)
+{
+	return b2Vec2(v.x - f, v.y - f);
+}
+
+/// Multiply a float with a vector.
+inline b2Vec2 operator * (const b2Vec2& v, float f)
+{
+	return b2Vec2(v.x * f, v.y * f);
+}
+
+/// Divide a vector by a float.
+inline b2Vec2 operator / (const b2Vec2& v, float f)
+{
+	return b2Vec2(v.x / f, v.y / f);
+}
+
+/// A 3D column vector with 3 elements.
 struct b2Vec3
 {
 	/// Default constructor does nothing (for performance).
@@ -176,7 +200,41 @@ struct b2Vec3
 		x *= s; y *= s; z *= s;
 	}
 
+		/// Get the length of this vector (the norm).
+	float32 Length() const
+	{
+		return b2Sqrt(x * x + y * y + z * z);
+	}
+
+	/// Convert this vector into a unit vector. Returns the length.
+	float32 Normalize()
+	{
+		float32 length = Length();
+		if (length < b2_epsilon)
+		{
+			return 0.0f;
+		}
+		float32 invLength = 1.0f / length;
+		x *= invLength;
+		y *= invLength;
+		z *= invLength;
+
+		return length;
+	}
+
 	float32 x, y, z;
+};
+
+/// A 4D column vector with 4 elements.
+struct b2Vec4
+{
+	/// Default constructor does nothing (for performance).
+	b2Vec4() {}
+
+	/// Construct using coordinates.
+	b2Vec4(float32 x, float32 y, float32 z, float32 w) : x(x), y(y), z(z), w(w) {}
+
+	float32 x, y, z, w;
 };
 
 /// A 2-by-2 matrix. Stored in column-major order.
