@@ -5,6 +5,7 @@ workspace "Box2D"
 	location ( "Build/%{_ACTION}" )
 	architecture "x86_64"
 	configurations { "Debug", "Release" }
+	systemversion "10.0.16299.0"
 
 	configuration "vs*"
 		defines { "_CRT_SECURE_NO_WARNINGS" }	
@@ -27,7 +28,8 @@ project "Box2D"
 	language "C++"
 	files { "Box2D/**.h", "Box2D/**.cpp" }
 	includedirs { "." }
-
+	flags { "StaticRuntime" }
+	
 project "GLEW"
 	kind "StaticLib"
 	language "C++"
